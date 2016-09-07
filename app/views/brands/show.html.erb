@@ -1,0 +1,14 @@
+<h1><%= @brand['brand_name'] %>(<%= @brand['brand_name_ja'] %>)</h1>
+
+<h2>アイテム</h2>
+<ul>
+  <% @items.each do |item| %>
+    <li><a href="/items/<%= item['id']%>"><%= item['title'] %><img width="100" src="<%= item_image(item['id']) %>"></li>
+  <% end %>
+</ul>
+<h2>LIKEしたユーザー</h2>
+<ul>
+  <% @users.each do |user| %>
+    <li><a href="/users/<%= user['id']%>"><%= user['name'] %></a></li>
+  <% end %>
+</ul>

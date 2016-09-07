@@ -1,0 +1,6 @@
+<h1>人気アイテムランキング</h1>
+<ol>
+  <% @items.each do |item| %>
+    <li><%= item['count'] %>like <a href="/items/<%= item['id'] %>"><img src="<%= item_image(item['id']) %>" width="100"></a></li>
+  <% end %>
+</ol>

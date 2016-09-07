@@ -1,0 +1,7 @@
+<h1>アイテム数が多いブランド一覧</h1>
+<ul>
+<% @brands.each do |brand| %>
+  <li><a href="/brands/<%= brand['id'] %>"><%= brand['brand_name'] %> (<%= brand['count'] %>)</a></li>
+<% end %>
+</ul>
+

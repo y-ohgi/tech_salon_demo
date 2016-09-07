@@ -1,20 +1,20 @@
 <h1>新着ユーザー</h1>
 <ul>
 <% @new_users.each do |user| %>
-  <li><%= user['name'] %>さん</li>
+  <li><a href="/users/<%= user['id'] %>"><%= user['name'] %>さん</a></li>
 <% end %>
 </ul>
 
 <h1>新着アイテム</h1>
 <ul>
 <% @new_items.each do |item| %>
-  <li><%= item['title'] %></li>
+  <li><a href="/items/<%= item['id'] %>"><%= item['title'] %></a></li>
 <% end %>
 </ul>
 
 <h1>新着ブランド</h1>
 <ul>
 <% @new_brands.each do |brand| %>
-  <li><%= brand['brand_name'] %></li>
+  <li><a href="/brands/<%= brand['id'] %>"><%= brand['brand_name'] %></a></li>
 <% end %>
 </ul>

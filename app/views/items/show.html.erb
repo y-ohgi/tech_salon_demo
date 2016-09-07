@@ -1,0 +1,19 @@
+<h1><%= @item['title']%></h1>
+
+<p><img src="<%= item_image(@item['id']) %>"></p>
+
+<h2>同じブランドのアイテム</h2>
+<ul>
+<% @items.each do |item| %>
+  <li><a href="/items/<%= item['id'] %>"><img src="<%= item_image(item['id']) %>" width="100"></a></li>
+<% end %>
+</ul>
+
+<h2>LIKEしたユーザー一覧</h2>
+<ul>
+<% @users.each do |user| %>
+  <li><a href="/users/<%= user['id'] %>"><%= user['name'] %></a></li>
+<% end %>
+</ul>
+
+
