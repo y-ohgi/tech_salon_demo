@@ -1,0 +1,23 @@
+# coding: utf-8
+
+development:
+  hosts:
+  - localhost
+  port: 6379
+  db:
+    default: 3
+    cache: 3
+test:
+  hosts:
+  - localhost
+  port: 6379
+  db:
+    default: 4
+    cache: 4
+production:
+  hosts:
+  - <%= ENV['DEMO_REDIS_HOST'] %>
+  port: 6379
+  db:
+    default: 1
+    cache: 2
