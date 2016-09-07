@@ -1,0 +1,2 @@
+class LikeBrandsController < ApplicationController
+end
