@@ -86,7 +86,7 @@ class RedisCache
     @redis.zscore(key, member)
   end
 
-  def zrevrange(key, start, stop)
-    @redis.zrevrange(key, start, stop)
+  def zrevrange(key, start, stop, scores: true)
+    @redis.zrevrange(key, start, stop, with_scores: scores)
   end
 end
