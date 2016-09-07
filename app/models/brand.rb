@@ -5,13 +5,13 @@ class Brand < ApplicationRecord
 
   # アイテムの数が多いブランド順
   def self.ranking
-    @brands = []
+    brands = []
     cache = @@cache.zrevrange('ranking', 0, 100)
     if cache.present?
       cache.each do |brand|
         b = Brand.get_brand(brand[0]).attributes
         b['count'] = brand[1].to_i
-        @brands << b
+        brands << b
       end
     else
       brand_id_counts = Item.where.not(:brand_id => 0).group(:brand_id).order('count_brand_id desc').limit(100).count('brand_id')
@@ -22,9 +22,9 @@ class Brand < ApplicationRecord
         b['count'] = brand_id_counts[brand['id']]
         @brands << b
       end
-      @brands = @brands.sort_by {|b| -b['count']}
+      brands = brands.sort_by {|b| -b['count']}
     end
-    @brands
+    brands
   end
 
   def self.get_brand(brand_id)
