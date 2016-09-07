@@ -15,25 +15,25 @@ class RedisCache
   end
 
   def _redis
-    return @redis
+    @redis
   end
 
   def _serialize(value)
-    return Zlib::Deflate.deflate(Marshal.dump(value))
+    Zlib::Deflate.deflate(Marshal.dump(value))
   end
 
   def _deserialize(value)
-    return Marshal.load(Zlib::Inflate.inflate(value))
+    Marshal.load(Zlib::Inflate.inflate(value))
   end
 
   def set(key, value)
-    return @redis.set(key, _serialize(value))
+    @redis.set(key, _serialize(value))
   end
 
   def get(key)
     value = @redis.get(key)
     value = _deserialize(value) if value != nil
-    return value
+    value
   end
 
   def bulk_get(keys)
@@ -43,14 +43,50 @@ class RedisCache
       end
     end
     values.map! {|v| _deserialize(v) if v != nil}
-    return values
+    values
   end
 
   def del(key)
-    return @redis.del(key)
+    @redis.del(key)
   end
 
   def flushdb()
-    return @redis.flushdb()
+    @redis.flushdb()
+  end
+
+  def incr(key)
+    @redis.incr(key)
+  end
+
+  def getset(key, value)
+    @redis.getset(key, value)
+  end
+
+  def rpush(key, value)
+    @redis.rpush(key, value)
+  end
+
+  def lrange(key, offset, limit)
+    @redis.lrange(key, offset, limit)
+  end
+
+  def zadd(key, score, member)
+    @redis.zadd(key, score, member)
+  end
+
+  def zrank(key, member)
+    @redis.zrank(key, member)
+  end
+
+  def zrevrank(key, member)
+    @redis.zrevrank(key, member)
+  end
+
+  def zscore(key, member)
+    @redis.zscore(key, member)
+  end
+
+  def zrevrange(key, start, stop)
+    @redis.zrevrange(key, start, stop)
   end
 end
