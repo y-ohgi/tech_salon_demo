@@ -9,14 +9,14 @@ class BrandsController < ApplicationController
       b['count'] = brand_id_counts[brand['id']]
       @brands << b
     end
-
+    @brands = @brands.sort_by {|k| -k["count"]}
   end
 
   def show
     brand_id = params[:id]
     @brand = Brand.find_by(id: brand_id)
-    @items  = Item.where(brand_id: brand_id).order("id desc").limit(10)
-    like_user_ids = LikeBrand.where(brand_id: brand_id).order("id desc").limit(100).pluck(:user_id)
+    @items  = Item.where(brand_id: brand_id).limit(100)
+    like_user_ids = LikeBrand.where(brand_id: brand_id).pluck(:user_id)
     @users   = User.where(id: like_user_ids)
   end
 end
