@@ -1,4 +1,4 @@
-<h1><%= @user['name'] %></h1>
+<h1><%= @user['name'] %>さん</h1>
 
 <h2>LIKEしたブランド</h2>
 <ul>
@@ -10,6 +10,6 @@
 <h2>LIKEしたアイテム</h2>
 <ul>
 <% @like_items.each do |item| %>
-  <li><a href="/items/<%= item['id'] %>"><%= item['title'] %><img width="100" src="<%= item_image(item['id']) %>"></a></li>
+  <li><a href="/items/<%= item['id'] %>"><img width="100" src="<%= item_image(item['id']) %>"><%= item['title'] %></a></li>
 <% end %>
 </ul>

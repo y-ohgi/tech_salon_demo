@@ -1,11 +1,12 @@
 <h1><%= @item['title']%></h1>
 
 <p><img src="<%= item_image(@item['id']) %>"></p>
-
+<p><%= @item['price'] %>円</p>
+<p><%= @item['description'] %></p>
 <h2>同じブランドのアイテム</h2>
 <ul>
 <% @items.each do |item| %>
-  <li><a href="/items/<%= item['id'] %>"><img src="<%= item_image(item['id']) %>" width="100"></a></li>
+  <li><a href="/items/<%= item['id'] %>"><img src="<%= item_image(item['id']) %>" width="100"><%= item['title'] %></a></li>
 <% end %>
 </ul>
 

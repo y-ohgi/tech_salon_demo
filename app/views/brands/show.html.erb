@@ -3,7 +3,7 @@
 <h2>アイテム</h2>
 <ul>
   <% @items.each do |item| %>
-    <li><a href="/items/<%= item['id']%>"><%= item['title'] %><img width="100" src="<%= item_image(item['id']) %>"></li>
+    <li><a href="/items/<%= item['id']%>"><img width="100" src="<%= item_image(item['id']) %>"><%= item['title'] %></li>
   <% end %>
 </ul>
 <h2>LIKEしたユーザー</h2>
