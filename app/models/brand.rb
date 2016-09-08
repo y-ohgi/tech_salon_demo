@@ -20,7 +20,7 @@ class Brand < ApplicationRecord
         @@cache.zadd('ranking', brand_id_counts[brand['id']], brand['id'])
         b = brand.attributes
         b['count'] = brand_id_counts[brand['id']]
-        @brands << b
+        brands << b
       end
       brands = brands.sort_by {|b| -b['count']}
     end
